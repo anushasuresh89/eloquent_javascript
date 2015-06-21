@@ -1,0 +1,39 @@
+function average(array) {
+  function plus(a, b) { return a + b; }
+  return array.reduce(plus) / array.length;
+}
+
+var byName = {};
+ancestry.forEach(function(person) {
+  byName[person.name] = person;
+});
+
+// Your code here.
+var haveMothers=ancestry.filter(function(persona)
+                            {
+                              var mother=persona.mother;
+                              var hasMother=0;
+                              ancestry.forEach(function(personb)
+                               {
+                                   if(personb.name==mother)
+                                   hasMother=hasMother||1;
+                               }
+                               );
+                              return hasMother==1;
+                            }
+                           );
+//console.log(haveMothers);
+var mumAges=[];
+var mothers=[];
+haveMothers.forEach(function(child)
+                    {
+                      var mum=child.mother;
+                      var myMom=ancestry.filter(function (person)
+                                                {
+                                                  return person.name==mum;
+                                                });
+                      mumAges.push(child.born-myMom[0].born);
+                     
+                    });
+//console.log(mumAges);
+console.log
